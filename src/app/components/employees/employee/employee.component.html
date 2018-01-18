@@ -1,0 +1,32 @@
+<form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
+    <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="employeeService.employeeObj.$key">
+    <div class="form-group">
+        <label>Name</label>
+        <input class="form-control" name="name" #name="ngModel" [(ngModel)]="employeeService.employeeObj.name" placeholder="Full Name" required>
+    </div>
+    <div class="form-group">
+        <label>Position</label>
+        <input class="form-control" name="position" #position="ngModel" [(ngModel)]="employeeService.employeeObj.position" placeholder="Position">
+    </div>
+    <div class="form-group">
+        <label>Office</label>
+        <input class="form-control" name="office" #office="ngModel" [(ngModel)]="employeeService.employeeObj.office" placeholder="Office">
+    </div>
+    <div class="form-group">
+        <label>Salary</label>
+        <div class="input-group">
+            <div class="input-group-addon">
+                <i class="fa fa-dollar"></i>
+            </div>
+            <input class="form-control" name="salary" #salary="ngModel" [(ngModel)]="employeeService.employeeObj.salary" placeholder="Salary">
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-default" [disabled]="!employeeForm.valid">
+     Submit</button>
+        <button type="button" class="btn btn-default" *ngIf="employeeService.employeeObj.$key!=null" (click)="onDelete(employeeForm)">
+       Delete</button>
+        <button type="button" class="btn btn-default" (click)="resetForm(employeeForm)">
+        Reset</button>
+    </div>
+</form>
